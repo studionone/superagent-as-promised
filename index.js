@@ -10,31 +10,31 @@
         return function(resolve, reject) {
           var error;
           try {
-              if (typeof _this.buffer !== 'function') {
+            if (typeof _this.buffer !== 'function') {
                 return _this.end(function(error, response) {
-                   if (error) {
-                     reject(error);
-                     return;
-                   }
-                   if (response.error) {
-                     reject(response.error);
-                     return;
-                   }
-                   return resolve(response);
-                 });
-             }
+                  if (error) {
+                    reject(error);
+                    return;
+                  }
+                  if (response.error) {
+                    reject(response.error);
+                    return;
+                  }
+                  return resolve(response);
+                });
+            }
 
-             return _this.end(function(error, response) {
-               if (error) {
-                 reject(error);
-                 return;
-               }
-               if (response.error) {
-                 reject(response.error);
-                 return;
-               }
-               return resolve(response);
-             });
+            return _this.buffer().end(function(error, response) {
+              if (error) {
+                reject(error);
+                return;
+              }
+              if (response.error) {
+                reject(response.error);
+                return;
+              }
+              return resolve(response);
+            });
           } catch (_error) {
             error = _error;
             return reject(error);
