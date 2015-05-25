@@ -24,7 +24,7 @@
                  });
              }
 
-             return _this.buffer().end(function(error, response) {
+             return _this.end(function(error, response) {
                if (error) {
                  reject(error);
                  return;
